@@ -1,0 +1,4 @@
+name: zmk-keyboards-skeletyl
+build:
+  settings:
+    board_root: .

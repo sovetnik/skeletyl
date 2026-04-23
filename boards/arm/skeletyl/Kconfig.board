@@ -1,0 +1,14 @@
+# Copyright (c) 2020-2021 Thys de Wet (vattern)
+# SPDX-License-Identifier: MIT
+
+config BOARD_SKELETYL
+	bool "skeletyl"
+	depends on SOC_NRF52840_QIAA
+
+config BOARD_SKELETYL_LEFT
+	bool "skeletyl_left"
+	depends on SOC_NRF52840_QIAA
+
+config BOARD_SKELETYL_RIGHT
+	bool "skeletyl_right"
+	depends on SOC_NRF52840_QIAA

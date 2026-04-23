@@ -1,0 +1,87 @@
+/dts-v1/;
+#include <nordic/nrf52840_qiaa.dtsi>
+#include <dt-bindings/led/led.h>
+#include "skeletyl.dtsi"
+
+&pwm0 {
+    status = "okay";
+    pinctrl-0 = <&pwm0_default>;
+    pinctrl-names = "default";
+};
+
+&pinctrl {
+    pwm0_default: pwm0_default {
+      group1 {
+        psels = <14>; // Replace with the correct numeric pin value for your hardware
+      };
+    };
+
+    spi3_default: spi3_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 12)>;
+        };
+    };
+
+    spi3_sleep: spi3_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 12)>;
+            low-power-enable;
+        };
+    };
+};
+
+&spi3 {
+  compatible = "nordic,nrf-spim";
+  status = "okay";
+  pinctrl-0 = <&spi3_default>;
+  pinctrl-1 = <&spi3_sleep>;
+  pinctrl-names = "default", "sleep";
+
+  led_strip: ws2812@0 {
+    compatible = "worldsemi,ws2812-spi";
+
+    /* SPI */
+    reg = <0>; /* ignored, but necessary for SPI bindings */
+    spi-max-frequency = <4000000>;
+
+    /* WS2812 */
+    chain-length = <18>; /* number of LEDs */
+    spi-one-frame = <0x70>;
+    spi-zero-frame = <0x40>;
+    color-mapping = <LED_COLOR_ID_GREEN
+                          LED_COLOR_ID_RED
+                          LED_COLOR_ID_BLUE>;
+  };
+};
+
+/ {
+  leds: leds {
+    compatible = "gpio-leds";
+    blue_led: led_0 {
+      gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;
+    };
+  };
+
+  ext-power {
+      compatible = "zmk,ext-power-generic";
+      control-gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
+      init-delay-ms = <50>;
+  };
+};
+
+&kscan0 {
+  compatible = "zmk,kscan-gpio-matrix";
+  col-gpios
+      = <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // col0
+      , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // col1
+      , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // col2
+      , <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // col3
+      , <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // col4
+      ;
+  row-gpios
+      = <&gpio1 15  (GPIO_ACTIVE_HIGH )> // row0
+      , <&gpio1 10 (GPIO_ACTIVE_HIGH )> // row1
+      , <&gpio1 13  (GPIO_ACTIVE_HIGH )> // row2
+      , <&gpio0 10  (GPIO_ACTIVE_HIGH )> // row3
+      ;
+};
