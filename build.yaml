@@ -23,4 +23,5 @@ include:
     artifact-name: skeletyl_right
   - board: skeletyl_left
     shield: settings_reset
+    cmake-args: -DCONFIG_ZMK_USB=n
     artifact-name: settings_reset
