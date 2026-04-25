@@ -30,18 +30,20 @@ Source: current staged changes in `boards/arm/skeletyl/skeletyl.keymap`.
   - `W` -> `&bootloader`
   - `E` -> `&bt BT_CLR_ALL`
   - `R` -> `&out OUT_USB`
-  - `T` -> `&rgb_ug_tog`
+  - `T` -> `&rgb_ug RGB_TOG`
   - `A/S/D/F` -> `&bt BT_SEL 0/1/2/3`
-  - `G/B` -> `&rgb_ug_on` / `&rgb_ug_off`
+  - `G/B` -> `&rgb_ug RGB_ON` / `&rgb_ug RGB_OFF`
 - Added conditional mirror layer `MIR` (`SYM + ALT`) with right-hand recovery mirror and RGB controls:
   - `P` -> `&sys_reset`
   - `O` -> `&bootloader`
   - `I` -> `&bt BT_CLR_ALL`
   - `U` -> `&out OUT_USB`
-  - `Y` -> `&rgb_ug_tog`
-  - `H/N` -> `&rgb_ug_on` / `&rgb_ug_off`
+  - `Y` -> `&rgb_ug RGB_TOG`
+  - `H/N` -> `&rgb_ug RGB_EFF` / `&rgb_ug RGB_EFR`
   - RGB matrix on left side:
     - `A/Z` saturation `+/-`
     - `S/X` hue `+/-`
     - `D/C` speed `+/-`
     - `F/V` brightness `+/-`
+- Layer display names expanded for Studio:
+  - `DEFAULT`, `GAME`, `GAME_FN`, `SYMBOLS`, `NAVIGATION`, `NUMPAD`, `ALT_CHARS`, `COMMAND`, `MIRROR`
