@@ -1,0 +1,9 @@
+boards:
+  - name: skeletyl_left
+    vendor: bastardkb
+    socs:
+      - name: nrf52840
+  - name: skeletyl_right
+    vendor: bastardkb
+    socs:
+      - name: nrf52840
