@@ -67,3 +67,8 @@ Source: current staged changes in `boards/arm/skeletyl/skeletyl.keymap`.
 - Elixir macros adapted for `Universal Layout Ortho` symbol mapping:
   - switched from generic HID symbol keycodes to layout-specific combos (`RA(O)`, `RA(P)`, `LS(RA(T))`, `LS(LBKT)`)
   - fixed outputs for: `|>`, `<-`, `->`, `%{`, `<=`, `=>`.
+- Added keymap-drawer pipeline (same pattern as ergonaut):
+  - new workflow: `.github/workflows/draw-keymaps.yml`
+  - source keymap: `boards/arm/skeletyl/skeletyl.keymap`
+  - output artifacts: `keymap-drawer/skeletyl.yaml` and `keymap-drawer/skeletyl.svg`
+  - forced drawing template: `foostan_corne_5col_layout` (3x5) to match skeletyl geometry.

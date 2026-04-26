@@ -6,6 +6,10 @@
 
 Репозиторий содержит board definition, keymap и CI-сборку прошивок в `.uf2`.
 
+## Keymap Preview
+
+![Skeletyl Keymap](./keymap-drawer/skeletyl.svg?raw=true "Skeletyl keymap")
+
 ## Что в репозитории
 
 - `boards/arm/skeletyl/` — board-файлы, devicetree, defconfig, keymap.
@@ -62,6 +66,17 @@ west build -s zmk/app -b skeletyl_right -- -DZMK_CONFIG=$PWD/config
   - левый thumb: `Shift` hold / `Space` tap;
   - правый thumb: `Shift` hold / `Delete` tap;
 - Elixir-макросы в `ALT_CHARS` (`|>`, `%{`, `<-`, `->`, `<=`, `=>`, `insl`).
+
+## Визуализация keymap
+
+В репозитории генерируется SVG-диаграмма раскладки через `keymap-drawer`:
+- `keymap-drawer/skeletyl.svg`
+
+Workflow `.github/workflows/draw-keymaps.yml` обновляет:
+- `keymap-drawer/skeletyl.yaml`
+- `keymap-drawer/skeletyl.svg`
+
+При изменениях в keymap-файлах workflow делает авто-коммит обновлённой визуализации в текущую ветку.
 
 ## Зависимость от Universal Layout
 
