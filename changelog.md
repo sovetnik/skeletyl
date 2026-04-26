@@ -47,3 +47,20 @@ Source: current staged changes in `boards/arm/skeletyl/skeletyl.keymap`.
     - `F/V` brightness `+/-`
 - Layer display names expanded for Studio:
   - `DEFAULT`, `GAME`, `GAME_FN`, `SYMBOLS`, `NAVIGATION`, `NUMPAD`, `ALT_CHARS`, `COMMAND`, `MIRROR`
+- Thumb mod-taps on base layer aligned with ergonaut style:
+  - left thumb: `&mt LSHFT SPACE`
+  - right thumb: `&mt RSHFT DEL`
+- Added brightness controls in `COMMAND` layer on right edge:
+  - `P` -> `C_BRI_UP`
+  - key below -> `C_BRI_DEC`
+- Added Elixir macro cluster on `ALT_CHARS`:
+  - `S` -> `m_elpipe` (`|>`)
+  - `D` -> `m_ldsh` (`<-`)
+  - `F` -> `m_rdsh` (`->`)
+  - `X` -> `m_elmap` (`%{`)
+  - `C` -> `m_leq` (`<=`)
+  - `V` -> `m_req` (`=>`)
+  - `B` -> `m_insl` (`insl`)
+- Refactor: extracted behavior/macro definitions from keymap to separate file:
+  - `boards/arm/skeletyl/skeletyl_behaviors.dtsi`
+  - `skeletyl.keymap` now keeps imports, conditional layers, and layer bindings.
