@@ -1,0 +1,176 @@
+layout:
+  zmk_keyboard: corneish_zen
+  layout_name: foostan_corne_6col_layout
+layers:
+  MAIN:
+  - {t: ']', h: Gui}
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - {t: '[', h: Gui}
+  - {t: '`', h: Ctrl}
+  - A
+  - S
+  - D
+  - F
+  - G
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - {t: '''', h: Ctrl}
+  - {t: '-', h: Alt}
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - N
+  - M
+  - ','
+  - .
+  - /
+  - {t: \, h: Alt}
+  - {t: ↹, h: NAV}
+  - {t: ␣, h: Shift}
+  - {t: ⏎, h: SYM}
+  - {t: Esc, h: SYM}
+  - {t: ⌫, h: Shift}
+  - {t: DELETE, h: NAV}
+  SYM:
+  - Gui
+  - '{'
+  - <-
+  - '-'
+  - ->
+  - '%{'
+  - insl
+  - <=
+  - '='
+  - =>
+  - '}'
+  - Gui
+  - Ctrl
+  - '!'
+  - '@'
+  - '#'
+  - $
+  - '%'
+  - ^
+  - '&'
+  - '*'
+  - (
+  - )
+  - Ctrl
+  - {t: '=', h: Alt}
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
+  - '|>'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  NAV:
+  - {t: F1, h: Gui}
+  - F2
+  - F3
+  - F4
+  - F5
+  - F6
+  - F7
+  - F8
+  - F9
+  - F10
+  - F11
+  - {t: F12, h: Gui}
+  - Ctrl
+  - +
+  - ←
+  - ↑
+  - →
+  - PAGE UP
+  - ←
+  - ↓
+  - ↑
+  - →
+  - '-'
+  - Ctrl
+  - Alt
+  - '='
+  - Home
+  - ↓
+  - End
+  - PAGE DOWN
+  - Home
+  - PAGE DOWN
+  - PAGE UP
+  - End
+  - _
+  - Alt
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  ADJ:
+  - BOOT
+  - UNLOCK
+  - ''
+  - Bri-
+  - Bri+
+  - Windows
+  - Apps
+  - Mute
+  - Vol Down
+  - Vol Up
+  - UNLOCK
+  - BOOT
+  - BT CLR
+  - BT 1
+  - BT 2
+  - BT 3
+  - BT 4
+  - BT 5
+  - BT 5
+  - BT 4
+  - BT 3
+  - BT 2
+  - BT 1
+  - BT CLR
+  - RESET
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Play
+  - ⏮️
+  - ⏭️
+  - ''
+  - RESET
+  - {type: held}
+  - ''
+  - {type: held}
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
