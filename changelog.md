@@ -64,3 +64,6 @@ Source: current staged changes in `boards/arm/skeletyl/skeletyl.keymap`.
 - Refactor: extracted behavior/macro definitions from keymap to separate file:
   - `boards/arm/skeletyl/skeletyl_behaviors.dtsi`
   - `skeletyl.keymap` now keeps imports, conditional layers, and layer bindings.
+- Elixir macros adapted for `Universal Layout Ortho` symbol mapping:
+  - switched from generic HID symbol keycodes to layout-specific combos (`RA(O)`, `RA(P)`, `LS(RA(T))`, `LS(LBKT)`)
+  - fixed outputs for: `|>`, `<-`, `->`, `%{`, `<=`, `=>`.

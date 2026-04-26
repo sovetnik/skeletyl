@@ -134,8 +134,8 @@
         MACRO_NO_PARAM(
             m_elpipe,
             &macro_tap
-                &kp PIPE
-                &kp GT
+                &kp LS(BSLH)
+                &kp RA(P)
                 &kp SPACE
         )
 
@@ -152,7 +152,7 @@
             m_leq,
             &macro_tap
                 &kp SPACE
-                &kp LT
+                &kp RA(O)
                 &kp EQUAL
                 &kp SPACE
         )
@@ -162,15 +162,15 @@
             &macro_tap
                 &kp SPACE
                 &kp EQUAL
-                &kp GT
+                &kp RA(P)
                 &kp SPACE
         )
 
         MACRO_NO_PARAM(
             m_elmap,
             &macro_tap
-                &kp PRCNT
-                &kp LEFT_BRACE
+                &kp N5
+                &kp LS(RA(DOT))
                 &kp SPACE
         )
 
@@ -178,7 +178,7 @@
             m_ldsh,
             &macro_tap
                 &kp SPACE
-                &kp LT
+                &kp RA(O)
                 &kp MINUS
                 &kp SPACE
         )
@@ -188,7 +188,7 @@
             &macro_tap
                 &kp SPACE
                 &kp MINUS
-                &kp GT
+                &kp RA(P)
                 &kp SPACE
         )
 
