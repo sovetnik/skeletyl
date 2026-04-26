@@ -1,9 +1,8 @@
 layout:
   zmk_keyboard: corneish_zen
-  layout_name: foostan_corne_6col_layout
+  layout_name: foostan_corne_5col_layout
 layers:
-  MAIN:
-  - {t: ']', h: Gui}
+  DEFAULT:
   - Q
   - W
   - E
@@ -14,8 +13,6 @@ layers:
   - I
   - O
   - P
-  - {t: '[', h: Gui}
-  - {t: '`', h: Ctrl}
   - A
   - S
   - D
@@ -26,8 +23,6 @@ layers:
   - K
   - L
   - ;
-  - {t: '''', h: Ctrl}
-  - {t: '-', h: Alt}
   - Z
   - X
   - C
@@ -38,39 +33,87 @@ layers:
   - ','
   - .
   - /
-  - {t: \, h: Alt}
-  - {t: ↹, h: NAV}
+  - Caps Lock
   - {t: ␣, h: Shift}
-  - {t: ⏎, h: SYM}
-  - {t: Esc, h: SYM}
+  - '&la 4'
+  - '&la 3'
   - {t: ⌫, h: Shift}
-  - {t: DELETE, h: NAV}
-  SYM:
-  - Gui
-  - '{'
-  - <-
-  - '-'
-  - ->
-  - '%{'
-  - insl
-  - <=
-  - '='
-  - =>
-  - '}'
-  - Gui
+  - ALT_CHARS
+  GAME:
+  - ↹
+  - Q
+  - W
+  - E
+  - R
+  - ''
+  - ''
+  - ↑
+  - ''
+  - ↹
+  - LSFT
+  - A
+  - S
+  - D
+  - F
+  - ''
+  - ←
+  - ↓
+  - →
+  - RSFT
   - Ctrl
-  - '!'
-  - '@'
-  - '#'
-  - $
-  - '%'
-  - ^
-  - '&'
-  - '*'
-  - (
-  - )
+  - Z
+  - X
+  - C
+  - V
+  - ''
+  - ''
+  - ''
+  - ''
   - Ctrl
-  - {t: '=', h: Alt}
+  - Alt
+  - ␣
+  - GAME_FN
+  - {t: GAME, h: toggle}
+  - ␣
+  - Print Scrn
+  GAME_FN:
+  - '5'
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - OUT TOG
+  - BT 1
+  - BT 2
+  - BT 3
+  - BT CLR ALL
+  - '0'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - G
+  - J
+  - I
+  - M
+  - T
+  - KP NUM
+  - ''
+  - ''
+  - RESET
+  - BOOT
+  - Esc
+  - ⏎
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  SYMBOLS:
   - '1'
   - '2'
   - '3'
@@ -81,15 +124,91 @@ layers:
   - '8'
   - '9'
   - '0'
-  - '|>'
+  - ;
+  - AltGr+`
+  - '`'
+  - Sft+`
+  - '-'
+  - +
+  - {t: '&m_press_key_twice LSHIFT', h: sticky, s: '&m_release_key_twice LSHIFT'}
+  - {t: '&m_press_key_twice LCTRL', h: sticky, s: '&m_release_key_twice LCTRL'}
+  - {t: '&m_press_key_twice LALT', h: sticky, s: '&m_release_key_twice LALT'}
+  - {t: '&m_press_key_twice LGUI', h: sticky, s: '&m_release_key_twice LGUI'}
+  - AltGr+\
+  - ''
+  - Sft+[
+  - '['
+  - _
+  - '='
+  - ']'
+  - Sft+]
+  - Sft+\
+  - \
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  NAV:
-  - {t: F1, h: Gui}
+  - {t: ▽, type: trans}
+  NAVIGATION:
+  - {t: '&m_hold_mod_press_key LCTRL TAB', s: ↹}
+  - {t: '&m_hold_mod_press_key LALT TAB', s: ↹}
+  - {t: '&m_hold_mod_press_key LGUI TAB', s: ↹}
+  - ''
+  - Esc
+  - Esc
+  - Home
+  - End
+  - ⌫
+  - ⌦
+  - {t: '&m_press_key_twice LGUI', h: sticky, s: '&m_release_key_twice LGUI'}
+  - {t: '&m_press_key_twice LALT', h: sticky, s: '&m_release_key_twice LALT'}
+  - {t: '&m_press_key_twice LCTRL', h: sticky, s: '&m_release_key_twice LCTRL'}
+  - {t: '&m_press_key_twice LSHIFT', h: sticky, s: '&m_release_key_twice LSHIFT'}
+  - ⏎
+  - ←
+  - ↓
+  - ↑
+  - →
+  - ⏎
+  - Ctl+←
+  - Ctl+→
+  - {t: GAME, h: toggle}
+  - Print Scrn
+  - ↹
+  - ↹
+  - Page Up
+  - Page Down
+  - ''''
+  - KP NUM
+  - COMMAND
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  NUMPAD:
+  - KP 1
+  - KP 2
+  - KP 3
+  - KP 4
+  - KP 5
+  - KP 6
+  - KP 7
+  - KP 8
+  - KP 9
+  - KP 0
+  - {t: '&m_press_key_twice LGUI', h: sticky, s: '&m_release_key_twice LGUI'}
+  - {t: '&m_press_key_twice LALT', h: sticky, s: '&m_release_key_twice LALT'}
+  - {t: '&m_press_key_twice LCTRL', h: sticky, s: '&m_release_key_twice LCTRL'}
+  - {t: '&m_press_key_twice LSHIFT', h: sticky, s: '&m_release_key_twice LSHIFT'}
+  - F11
+  - F12
+  - {t: '&m_press_key_twice LSHIFT', h: sticky, s: '&m_release_key_twice LSHIFT'}
+  - {t: '&m_press_key_twice LCTRL', h: sticky, s: '&m_release_key_twice LCTRL'}
+  - {t: '&m_press_key_twice LALT', h: sticky, s: '&m_release_key_twice LALT'}
+  - {t: '&m_press_key_twice LGUI', h: sticky, s: '&m_release_key_twice LGUI'}
+  - F1
   - F2
   - F3
   - F4
@@ -99,78 +218,120 @@ layers:
   - F8
   - F9
   - F10
-  - F11
-  - {t: F12, h: Gui}
-  - Ctrl
-  - +
-  - ←
-  - ↑
-  - →
-  - PAGE UP
-  - ←
-  - ↓
-  - ↑
-  - →
-  - '-'
-  - Ctrl
-  - Alt
-  - '='
-  - Home
-  - ↓
-  - End
-  - PAGE DOWN
-  - Home
-  - PAGE DOWN
-  - PAGE UP
-  - End
-  - _
-  - Alt
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  ALT_CHARS:
+  - AltGr+Q
+  - AltGr+W
+  - AltGr+E
+  - AltGr+R
+  - AltGr+T
+  - AltGr+Y
+  - AltGr+U
+  - AltGr+I
+  - AltGr+O
+  - AltGr+P
+  - AltGr+A
+  - '|>'
+  - <-
+  - ->
+  - AltGr+G
+  - AltGr+H
+  - AltGr+J
+  - AltGr+K
+  - AltGr+L
+  - AltGr+;
+  - AltGr+Z
+  - '%{'
+  - <=
+  - =>
+  - insl
+  - AltGr+N
+  - AltGr+M
+  - AltGr+,
+  - AltGr+.
+  - AltGr+/
+  - {t: ▽, type: trans}
+  - AltGr+␣
+  - Shift
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  ADJ:
+  COMMAND:
+  - RESET
   - BOOT
-  - UNLOCK
-  - ''
-  - Bri-
-  - Bri+
-  - Windows
-  - Apps
-  - Mute
+  - BT CLR ALL
+  - Out USB
+  - RGB TOG
+  - RGB TOG
   - Vol Down
+  - Mute
   - Vol Up
-  - UNLOCK
-  - BOOT
-  - BT CLR
+  - Bri+
   - BT 1
   - BT 2
   - BT 3
   - BT 4
-  - BT 5
-  - BT 5
-  - BT 4
-  - BT 3
-  - BT 2
-  - BT 1
-  - BT CLR
-  - RESET
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - Play
+  - RGB ON
+  - Meh+H
   - ⏮️
+  - ⏯
   - ⏭️
+  - Bri-
   - ''
+  - ''
+  - ''
+  - ''
+  - RGB OFF
+  - Meh+N
+  - Meh+M
+  - Meh+,
+  - Meh+.
+  - BOOT
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Gui
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  MIRROR:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - RGB TOG
+  - RGB TOG
+  - Out USB
+  - BT CLR ALL
+  - BOOT
   - RESET
-  - {type: held}
-  - ''
-  - {type: held}
-  - ''
+  - RGB SAI
+  - RGB HUI
+  - RGB SPI
+  - RGB BRI
+  - RGB EFF
+  - RGB EFF
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - RGB SAD
+  - RGB HUD
+  - RGB SPD
+  - RGB BRD
+  - RGB EFR
+  - RGB EFR
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
