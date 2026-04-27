@@ -72,3 +72,13 @@ Source: current staged changes in `boards/arm/skeletyl/skeletyl.keymap`.
   - source keymap: `boards/arm/skeletyl/skeletyl.keymap`
   - output artifacts: `keymap-drawer/skeletyl.yaml` and `keymap-drawer/skeletyl.svg`
   - forced drawing template: `foostan_corne_5col_layout` (3x5) to match skeletyl geometry.
+
+## battery revive experiment
+
+- Disabled battery reporting path while keeping split BLE experimental connection:
+  - removed `CONFIG_ZMK_BATTERY_REPORTING=y` on both halves
+  - removed `CONFIG_ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_PROXY=y` on central
+  - removed `CONFIG_ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING=y` on central
+- NAV layer adjustment:
+  - `R` set to `&tabber`
+  - `Q/W` set to `HOME/END`
