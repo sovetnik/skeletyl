@@ -151,10 +151,10 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   NAVIGATION:
-  - {t: '&m_hold_mod_press_key LCTRL TAB', s: ↹}
-  - {t: '&m_hold_mod_press_key LALT TAB', s: ↹}
+  - Home
+  - End
   - {t: '&m_hold_mod_press_key LGUI TAB', s: ↹}
-  - ''
+  - {t: '&m_hold_mod_press_key LCTRL TAB', s: ↹}
   - Esc
   - Esc
   - Home
