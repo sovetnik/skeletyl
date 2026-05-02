@@ -93,7 +93,7 @@ _ BSL        ___          _ LS(LBKT)   _ LBKT      _ UNDER         _ EQUAL      
         nav_layer {
             display-name = "NAVIGATION";
             bindings = <
-&tabber      &swapper_win &swapper_mac ___         _ ESC           _ ESC        _ HOME       _ END        _ BSPC       _ DEL
+_ HOME       _ END        &swapper_mac &tabber     _ ESC           _ ESC        _ HOME       _ END        _ BSPC       _ DEL
 &cm_gui      &cm_alt      &cm_ctrl     &cm_sft     _ RET           _ LEFT       _ DOWN       _ UP         _ RIGHT      _ RET
 _ PSPC       _ NSPC       &tog GAM     _ PSCRN     _ TAB           _ TAB        _ PG_UP      _ PG_DN      _ APOS       _ KP_NUM
                           &mo CMD      ______      ______          ______       ______       ______
