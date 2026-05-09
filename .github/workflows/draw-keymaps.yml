@@ -3,6 +3,8 @@ name: Draw ZMK keymaps
 on:
   workflow_dispatch:
   push:
+    branches:
+      - master
     paths:
       - 'boards/arm/skeletyl/*.keymap'
       - 'boards/arm/skeletyl/*.dtsi'

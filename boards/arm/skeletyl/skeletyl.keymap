@@ -61,22 +61,22 @@ _ Z          _ X          _ C          _ V         _ B             _ N          
         };
 
         gam_layer {
-            display-name = "GAME";
+            display-name = "COMMIT";
             bindings = <
-_ TAB        _ Q          _ W          _ E         _ R             ___          ___          _ UP         ___          _ TAB
-_ LSFT       _ A          _ S          _ D         _ F             ___          _ LEFT       _ DOWN       _ RIGHT      _ RSFT
+_ TAB        _ Q          _ W          _ E         _ R             _ Y          _ U          _ S          _ V          _ TAB
+_ LSFT       _ A          _ S          _ D         _ F             _ TAB        _ J          _ K          _ L          _ LSFT
 _ LCTRL      _ Z          _ X          _ C         _ V             ___          ___          ___          ___          _ RCTRL
                           _ LALT       _ SPACE     &mo GFN         &tog GAM     _ SPACE      _ PSCRN
             >;
         };
 
         gfn_layer {
-            display-name = "GAME_FN";
+            display-name = "COMMIT_FN";
             bindings = <
-_ N5         _ N1         _ N2         _ N3        _ N4            &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_CLR_ALL
-_ N0         _ N6         _ N7         _ N8        _ N9            ___          ___          ___          ___          ___
-_ G          _ J          _ I          _ M         _ T             _ KP_NUM     ___          ___          &sys_reset   &bootloader
-                          _ ESC        _ RET       ______          ______       ______       ______
+_ N5         _ N1         _ N2         _ N3        _ N4            &rgb_ug RGB_TOG ___          ___          ___          ___
+_ N0         _ N6         _ N7         _ N8        _ N9            ___             ___          ___          ___          ___
+_ G          _ J          _ I          _ M         _ T             ___             ___          ___          ___          ___
+                          _ ESC        _ RET       ______          ___             ___          ___
             >;
         };
 
@@ -95,7 +95,7 @@ _ BSL        ___          _ LS(LBKT)   _ LBKT      _ UNDER         _ EQUAL      
             bindings = <
 _ HOME       _ END        &swapper_mac &tabber     _ ESC           _ ESC        _ HOME       _ END        _ BSPC       _ DEL
 &cm_gui      &cm_alt      &cm_ctrl     &cm_sft     _ RET           _ LEFT       _ DOWN       _ UP         _ RIGHT      _ RET
-_ PSPC       _ NSPC       &tog GAM     _ PSCRN     _ TAB           _ TAB        _ PG_UP      _ PG_DN      _ APOS       _ KP_NUM
+_ PSPC       _ NSPC       &tog GAM     _ PSCRN     _ TAB           _ TAB        _ PG_UP      _ PG_DN      _ APOS       ___
                           &mo CMD      ______      ______          ______       ______       ______
             >;
         };
