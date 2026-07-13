@@ -173,3 +173,35 @@ at all and rely on `nice_nano`'s own board defconfig, which resolves
 correctly for peripherals - removed the forced `CONFIG_ZMK_USB=y` from
 `skeletyl_left_defconfig` and the now-pointless `config ZMK_USB / default y`
 in `Kconfig.defconfig` to match.
+
+### RGB underglow stopped responding to keymap hotkeys
+
+Flashed and noticed the RGB glow hotkeys (MIR layer, CMD layer `RGB_TOG`)
+did nothing on either half - previously (skeletyl_left as central) they
+drove *both* halves' LEDs in sync, not just the triggering side.
+
+Root cause, traced through ZMK's own behavior-dispatch code
+(`src/behavior.c`): `&rgb_ug` is declared `BEHAVIOR_LOCALITY_GLOBAL`
+(`behavior_rgb_underglow.c:260`) - invoking a global-locality behavior makes
+the *central* fan it out to every split peripheral over BLE
+(`zmk_split_central_invoke_behavior`, GATT `RUN_BEHAVIOR` characteristic in
+`split/bluetooth/service.c`), which is what made both halves light up
+together. But before any of that fan-out happens, the central has to
+resolve `&rgb_ug` as a local behavior device first
+(`zmk_behavior_get_binding` at the top of `zmk_behavior_invoke_binding`) -
+and the dongle never had `CONFIG_ZMK_RGB_UNDERGLOW` enabled, so that lookup
+failed immediately and the whole invocation - including the fan-out to the
+halves - never started. Not a "no LEDs on the dongle" problem so much as a
+"the dongle never got as far as asking who has LEDs" problem.
+
+Fix: enabled `CONFIG_ZMK_RGB_UNDERGLOW=y` + `CONFIG_SPI=y` on
+`skeletyl_dongle.conf`, plus a stub `led_strip` (`worldsemi,ws2812-spi`,
+`chain-length = <1>`) on `&spi1` in `skeletyl_dongle.overlay` - that bus is
+already enabled with default pinctrl (MOSI on P0.10) on nice!nano's own
+board files and otherwise unused here, so no new pin claims needed.
+`rgb_underglow.c` hard-`#error`s at compile time without a `zmk,underglow`
+chosen node, so the stub isn't optional once the Kconfig is on - nothing is
+physically connected to it, the pixel count is arbitrary and never matters,
+it exists purely so the central-side `&rgb_ug` device resolves. Both
+halves' own `CONFIG_ZMK_RGB_UNDERGLOW` + real `led_strip` were untouched -
+they already had everything needed on the receiving end.

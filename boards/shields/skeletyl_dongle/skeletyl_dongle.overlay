@@ -7,12 +7,14 @@
 // physical layout ever changes.
 
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/led/led.h>
 #include <physical_layouts.dtsi>
 
 / {
     chosen {
         zmk,kscan = &mock_kscan;
         zmk,physical-layout = &skeletyl_5col_layout;
+        zmk,underglow = &led_strip;
     };
 
     mock_kscan: kscan_1 {
@@ -95,5 +97,34 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)                 RC(2,9) RC(2,8) RC(2,7) 
                 , <      30 31 32 33 34 35      >
                 ;
         };
+    };
+};
+
+// Stub led_strip: the dongle has no physical LEDs, but &rgb_ug is declared
+// BEHAVIOR_LOCALITY_GLOBAL upstream (behavior_rgb_underglow.c) - invoking it
+// fans the command out to every split peripheral over BLE, which is how
+// both halves' real underglow gets driven. For that fan-out to happen at
+// all, the *central* first needs its own local &rgb_ug device to resolve,
+// which requires CONFIG_ZMK_RGB_UNDERGLOW=y here, which in turn hard-errors
+// at compile time without a zmk,underglow chosen node (rgb_underglow.c:31).
+// spi1 is already enabled with default pinctrl on nice!nano's own board
+// files (MOSI on P0.10) and otherwise unused on this shield - reusing it
+// rather than claiming a new pin. chain-length=1 is arbitrary; nothing is
+// physically connected, so the actual pixel count never matters.
+&spi1 {
+    status = "okay";
+
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+
+        reg = <0>;
+        spi-max-frequency = <4000000>;
+
+        chain-length = <1>;
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+        color-mapping = <LED_COLOR_ID_GREEN
+                          LED_COLOR_ID_RED
+                          LED_COLOR_ID_BLUE>;
     };
 };
