@@ -82,3 +82,34 @@ Source: current staged changes in `boards/arm/skeletyl/skeletyl.keymap`.
 - NAV layer adjustment:
   - `R` set to `&tabber`
   - `Q/W` set to `HOME/END`
+
+## home-row mods (branch `homerow`, ported from charybdis)
+
+Ported the home-row-mod pivot from the `charybdis` repo instead of keeping two
+different modifier systems across the two personal keyboards. The
+`cm_gui/cm_alt/cm_ctrl/cm_sft` sticky-mod chain (`sticky_forever` +
+`m_press_key_twice`/`m_release_key_twice`) never crashed here - crashing was
+specific to charybdis's dongle topology - but it's structurally the same
+construction, so it's gone in favor of the simpler, already-verified-stable
+recipe.
+
+- `skeletyl_behaviors.dtsi`: removed `cm_gui/cm_alt/cm_ctrl/cm_sft`,
+  `sticky_forever`, `m_press_key_twice`/`m_release_key_twice`, the
+  `STICKY_FOREVER`/`MAX_TIMER` macros, and the global `&sk { release-after-ms
+  = <60000>; }` override (all now dead). Added `hml`/`hmr` (timeless
+  home-row mods: `balanced` flavor, `require-prior-idle-ms = <150>`,
+  `tapping-term-ms = <280>`, `hold-trigger-on-release`).
+  `THUMBS = 30 31 32 33 34 35` (skeletyl's thumb cluster is 3+3, unlike
+  charybdis's 3+2) - both hands' three thumb keys included in both
+  `hold-trigger-key-positions` lists, same as charybdis.
+- `skeletyl.keymap` DEFAULT row1: `A S D F` / `J K L ;` now
+  `&hml LGUI/LALT/LCTRL/LSHFT` / `&hmr LSHFT/LCTRL/LALT/LGUI`.
+- NAV row1 left half: was `&cm_gui &cm_alt &cm_ctrl &cm_sft`, now mirrors the
+  right half's arrows (`LEFT DOWN UP RIGHT RET` on both sides), matching
+  charybdis.
+- SYM row1 right half (`J K L ;`) and NUM row1 both halves (`A S D F` /
+  `J K L ;`): former `&cm_*` positions now `______` (freed, not yet assigned
+  - same open question as charybdis's equivalent slots).
+- `la`'s `&kp LSHFT/LCTRL/LALT/LGUI` release-cleanup lines kept as-is
+  (unchanged) - still load-bearing for `swapper_mac`/`tabber`, per the
+  charybdis investigation.
