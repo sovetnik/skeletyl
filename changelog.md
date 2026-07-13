@@ -155,3 +155,21 @@ physically on hand for this build.
 - Fixed `.github/workflows/draw-keymaps.yml`: watched paths and the
   `keymap parse` source path both pointed at the old
   `boards/arm/skeletyl/skeletyl.keymap` location - updated to `config/`.
+
+### CI fix: `skeletyl_left` link failure after the peripheral flip
+
+`skeletyl_left`'s build failed at link time with undefined references to
+`zmk_hid_get_keyboard_report`/`zmk_hid_get_consumer_report`/
+`usb_hid_register_device`/`usb_hid_init` - all from `src/usb_hid.c`.
+
+Root cause: `skeletyl_left_defconfig` had a literal `CONFIG_ZMK_USB=y`.
+Upstream, `ZMK_USB` `depends on (!ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL)` and
+`src/hid.c` (which provides those symbols) is only compiled under the same
+condition (`app/CMakeLists.txt`) - but `target_sources_ifdef(CONFIG_ZMK_USB
+... src/usb_hid.c)` still picked up the board-level forced value, compiling
+`usb_hid.c` (which calls into `hid.c`) against a peripheral build that never
+compiles `hid.c`. charybdis's peripheral `.conf` files never set `ZMK_USB`
+at all and rely on `nice_nano`'s own board defconfig, which resolves
+correctly for peripherals - removed the forced `CONFIG_ZMK_USB=y` from
+`skeletyl_left_defconfig` and the now-pointless `config ZMK_USB / default y`
+in `Kconfig.defconfig` to match.
