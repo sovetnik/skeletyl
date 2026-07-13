@@ -219,3 +219,6 @@ dongle's output to BLE.
   `&out OUT_BLE` - kept on `MIR` rather than `CMD`'s own right half, so the
   same "awkward, deliberate reach" property holds on both hands. `MIR`'s
   pre-existing lone `OUT_USB` on `U` is untouched.
+
+Confirmed working on hardware: dongle switches to `OUT_BLE` and pairs
+directly to the host over Bluetooth, same as charybdis.
