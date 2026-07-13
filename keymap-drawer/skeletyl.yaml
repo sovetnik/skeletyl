@@ -13,16 +13,16 @@ layers:
   - I
   - O
   - P
-  - A
-  - S
-  - D
-  - F
+  - {t: A, h: Gui}
+  - {t: S, h: Alt}
+  - {t: D, h: Ctrl}
+  - {t: F, h: Shift}
   - G
   - H
-  - J
-  - K
-  - L
-  - ;
+  - {t: J, h: Shift}
+  - {t: K, h: Ctrl}
+  - {t: L, h: Alt}
+  - {t: ;, h: Gui}
   - Z
   - X
   - C
@@ -39,27 +39,27 @@ layers:
   - '&la 3'
   - {t: ⌫, h: Shift}
   - ALT_CHARS
-  GAME:
+  COMMIT:
   - ↹
   - Q
   - W
   - E
   - R
-  - ''
-  - ''
-  - ↑
-  - ''
+  - Y
+  - U
+  - S
+  - V
   - ↹
   - LSFT
   - A
   - S
   - D
   - F
-  - ''
-  - ←
-  - ↓
-  - →
-  - RSFT
+  - ↹
+  - J
+  - K
+  - L
+  - LSFT
   - Ctrl
   - Z
   - X
@@ -72,21 +72,21 @@ layers:
   - Ctrl
   - Alt
   - ␣
-  - GAME_FN
-  - {t: GAME, h: toggle}
+  - COMMIT_FN
+  - {t: COMMIT, h: toggle}
   - ␣
   - Print Scrn
-  GAME_FN:
+  COMMIT_FN:
   - '5'
   - '1'
   - '2'
   - '3'
   - '4'
-  - OUT TOG
-  - BT 1
-  - BT 2
-  - BT 3
-  - BT CLR ALL
+  - RGB TOG
+  - ''
+  - ''
+  - ''
+  - ''
   - '0'
   - '6'
   - '7'
@@ -102,17 +102,17 @@ layers:
   - I
   - M
   - T
-  - KP NUM
   - ''
   - ''
-  - RESET
-  - BOOT
+  - ''
+  - ''
+  - ''
   - Esc
   - ⏎
   - {type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - ''
   SYMBOLS:
   - '1'
   - '2'
@@ -130,10 +130,10 @@ layers:
   - Sft+`
   - '-'
   - +
-  - {t: '&m_press_key_twice LSHIFT', h: sticky, s: '&m_release_key_twice LSHIFT'}
-  - {t: '&m_press_key_twice LCTRL', h: sticky, s: '&m_release_key_twice LCTRL'}
-  - {t: '&m_press_key_twice LALT', h: sticky, s: '&m_release_key_twice LALT'}
-  - {t: '&m_press_key_twice LGUI', h: sticky, s: '&m_release_key_twice LGUI'}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - AltGr+\
   - ''
   - Sft+[
@@ -161,10 +161,10 @@ layers:
   - End
   - ⌫
   - ⌦
-  - {t: '&m_press_key_twice LGUI', h: sticky, s: '&m_release_key_twice LGUI'}
-  - {t: '&m_press_key_twice LALT', h: sticky, s: '&m_release_key_twice LALT'}
-  - {t: '&m_press_key_twice LCTRL', h: sticky, s: '&m_release_key_twice LCTRL'}
-  - {t: '&m_press_key_twice LSHIFT', h: sticky, s: '&m_release_key_twice LSHIFT'}
+  - ←
+  - ↓
+  - ↑
+  - →
   - ⏎
   - ←
   - ↓
@@ -173,14 +173,14 @@ layers:
   - ⏎
   - Ctl+←
   - Ctl+→
-  - {t: GAME, h: toggle}
+  - {t: COMMIT, h: toggle}
   - Print Scrn
   - ↹
   - ↹
   - Page Up
   - Page Down
   - ''''
-  - KP NUM
+  - ''
   - COMMAND
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -198,16 +198,16 @@ layers:
   - KP 8
   - KP 9
   - KP 0
-  - {t: '&m_press_key_twice LGUI', h: sticky, s: '&m_release_key_twice LGUI'}
-  - {t: '&m_press_key_twice LALT', h: sticky, s: '&m_release_key_twice LALT'}
-  - {t: '&m_press_key_twice LCTRL', h: sticky, s: '&m_release_key_twice LCTRL'}
-  - {t: '&m_press_key_twice LSHIFT', h: sticky, s: '&m_release_key_twice LSHIFT'}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - F11
   - F12
-  - {t: '&m_press_key_twice LSHIFT', h: sticky, s: '&m_release_key_twice LSHIFT'}
-  - {t: '&m_press_key_twice LCTRL', h: sticky, s: '&m_release_key_twice LCTRL'}
-  - {t: '&m_press_key_twice LALT', h: sticky, s: '&m_release_key_twice LALT'}
-  - {t: '&m_press_key_twice LGUI', h: sticky, s: '&m_release_key_twice LGUI'}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - F1
   - F2
   - F3

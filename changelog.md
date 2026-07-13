@@ -113,3 +113,45 @@ recipe.
 - `la`'s `&kp LSHFT/LCTRL/LALT/LGUI` release-cleanup lines kept as-is
   (unchanged) - still load-bearing for `swapper_mac`/`tabber`, per the
   charybdis investigation.
+
+## nice!nano dongle + battery proxy (branch `homerow`, see rfcs/0001-nice-nano-dongle.md)
+
+Brought skeletyl's topology in line with charybdis: a dongle as BLE central
+instead of `skeletyl_left`, with full battery proxy for both halves. Unlike
+charybdis (xiao_ble), the dongle here is an **Adafruit nice!nano** - what's
+physically on hand for this build.
+
+- Moved `boards/arm/skeletyl/skeletyl.keymap` and `skeletyl_behaviors.dtsi`
+  to `config/` - ZMK's keymap search strips shield/board suffixes
+  (`skeletyl_dongle`/`skeletyl_left`/`skeletyl_right` all reduce to
+  `skeletyl`) and always checks `config/` first, so one file now serves all
+  three build targets, same as `config/charybdis.keymap`.
+- New shield `boards/shields/skeletyl_dongle/` targeting `nice_nano`:
+  `Kconfig.shield`, `Kconfig.defconfig` (`ZMK_SPLIT_ROLE_CENTRAL=y`),
+  `.conf` (2 peripherals, `CENTRAL_BATTERY_LEVEL_FETCHING`/`_PROXY`,
+  `ZMK_SLEEP=n`), `.overlay`, `.zmk.yml`.
+- The overlay's physical-layout node (`skeletyl_5col_layout` +
+  `skeletyl_position_map`) is a hand-kept duplicate of the one in
+  `boards/arm/skeletyl/skeletyl.dtsi`, not a shared include - that file also
+  carries real board-level config (ADC, UART, flash partitions) that has no
+  business being shield-visible, and cross-directory quote-includes don't
+  resolve here (same class of problem fixed once already on charybdis).
+  `zmk,kscan` on the dongle points at a `zmk,kscan-mock` node, matching
+  `charybdis_dongle.overlay`.
+- `boards/arm/skeletyl/Kconfig.defconfig`: removed
+  `ZMK_SPLIT_BLE_ROLE_CENTRAL default y` from `BOARD_SKELETYL_LEFT` - both
+  halves are peripherals now. `ZMK_USB default y` stays, so `skeletyl_left`
+  can still be flashed standalone if ever needed.
+- No split-queue-size bumps on the dongle (unlike charybdis) - skeletyl has
+  no pointing device, so there's no continuous trackball traffic to size
+  for; ZMK's default queue sizes are fine for ordinary keypresses.
+- `build.yaml`: central build is now `nice_nano/nrf52840/zmk` +
+  `skeletyl_dongle` (with Studio, same as before on `skeletyl_left`); halves
+  build as before but no longer carry the Studio cmake-args.
+- Added `skeletyl_right_standalone_central` fallback build (`skeletyl_right`
+  with `-DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y`), matching charybdis's
+  `charybdis_right_standalone_central` - direct half-to-half BLE if the
+  dongle is ever unavailable. Not yet confirmed on hardware.
+- Fixed `.github/workflows/draw-keymaps.yml`: watched paths and the
+  `keymap parse` source path both pointed at the old
+  `boards/arm/skeletyl/skeletyl.keymap` location - updated to `config/`.

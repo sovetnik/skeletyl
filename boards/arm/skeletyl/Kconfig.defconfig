@@ -6,9 +6,10 @@ if BOARD_SKELETYL_LEFT
 config ZMK_KEYBOARD_NAME
   default "Skeletyl"
 
-config ZMK_SPLIT_BLE_ROLE_CENTRAL
-	default y
-
+# Central role moved to boards/shields/skeletyl_dongle - both halves are
+# peripherals now (see rfcs/0001-nice-nano-dongle.md). ZMK_USB stays on so
+# this board can still be flashed standalone (e.g. settings_reset, or a
+# future no-dongle fallback build like charybdis's).
 config ZMK_USB
 	default y
 

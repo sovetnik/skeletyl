@@ -1,0 +1,8 @@
+file_format: "1"
+id: skeletyl_dongle
+name: Skeletyl Dongle
+type: shield
+url: https://github.com/sovetnik/skeletyl
+requires: [pro_micro]
+features:
+  - keys
