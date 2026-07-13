@@ -205,3 +205,17 @@ physically connected to it, the pixel count is arbitrary and never matters,
 it exists purely so the central-side `&rgb_ug` device resolves. Both
 halves' own `CONFIG_ZMK_RGB_UNDERGLOW` + real `led_strip` were untouched -
 they already had everything needed on the receiving end.
+
+### Added `&out OUT_BLE` output selector, wireless-capable now that a dongle exists
+
+Previously only `&out OUT_USB` existed on `CMD`/`MIR` - no way to switch the
+dongle's output to BLE.
+
+- `CMD` layer: `R` (old lone `OUT_USB` slot) freed to `___`; `X`/`C` now
+  `&out OUT_BLE` / `&out OUT_USB` - deliberately placed one column off the
+  home position (needs `&mo CMD` held + a same-hand reach), so the output
+  isn't switched by accident.
+- `MIR` layer: mirrored on the right hand, `M`/`,` = `&out OUT_USB` /
+  `&out OUT_BLE` - kept on `MIR` rather than `CMD`'s own right half, so the
+  same "awkward, deliberate reach" property holds on both hands. `MIR`'s
+  pre-existing lone `OUT_USB` on `U` is untouched.

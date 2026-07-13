@@ -123,9 +123,9 @@ _ RA(Z)      &m_elmap     &m_leq       &m_req      &m_insl         _ RA(N)      
         cmd_layer {
             display-name = "COMMAND";
             bindings = <
-&sys_reset   &bootloader  &bt BT_CLR_ALL &out OUT_USB &rgb_ug RGB_TOG &rgb_ug RGB_TOG _ C_VOL_DN   _ C_MUTE     _ C_VOL_UP   _ C_BRI_UP
+&sys_reset   &bootloader  &bt BT_CLR_ALL ___          &rgb_ug RGB_TOG &rgb_ug RGB_TOG _ C_VOL_DN   _ C_MUTE     _ C_VOL_UP   _ C_BRI_UP
 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2   &bt BT_SEL 3 &rgb_ug RGB_ON  _ MEH(H)     _ C_PREV     _ C_PP       _ C_NEXT     _ C_BRI_DEC
-___          ___          ___            ___          &rgb_ug RGB_OFF _ MEH(N)     _ MEH(M)     _ MEH(COMMA) _ MEH(DOT)   &bootloader
+___          &out OUT_BLE &out OUT_USB   ___          &rgb_ug RGB_OFF _ MEH(N)     _ MEH(M)     _ MEH(COMMA) _ MEH(DOT)   &bootloader
                           ______       ______      ______          _ LGUI       ______       ______
             >;
         };
@@ -135,7 +135,7 @@ ___          ___          ___            ___          &rgb_ug RGB_OFF _ MEH(N)  
             bindings = <
 ______       ______       ______       ______      &rgb_ug RGB_TOG &rgb_ug RGB_TOG &out OUT_USB  &bt BT_CLR_ALL &bootloader &sys_reset
 &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_SPI &rgb_ug RGB_BRI &rgb_ug RGB_EFF &rgb_ug RGB_EFF ______       ______         ______      ______
-&rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_SPD &rgb_ug RGB_BRD &rgb_ug RGB_EFR &rgb_ug RGB_EFR ______       ______         ______      ______
+&rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_SPD &rgb_ug RGB_BRD &rgb_ug RGB_EFR &rgb_ug RGB_EFR ______       &out OUT_USB   &out OUT_BLE      ______
                           ______       ______      ______          ______       ______       ______
             >;
         };
