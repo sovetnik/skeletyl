@@ -265,7 +265,7 @@ layers:
   - RESET
   - BOOT
   - BT CLR ALL
-  - Out USB
+  - ''
   - RGB TOG
   - RGB TOG
   - Vol Down
@@ -283,8 +283,8 @@ layers:
   - ⏭️
   - Bri-
   - ''
-  - ''
-  - ''
+  - Out BLE
+  - Out USB
   - ''
   - RGB OFF
   - Meh+N
@@ -326,8 +326,8 @@ layers:
   - RGB EFR
   - RGB EFR
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - Out USB
+  - Out BLE
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
