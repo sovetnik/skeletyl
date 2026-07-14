@@ -11,14 +11,13 @@
 #define ______ &trans
 
 #define DEF 0
-#define GAM 1
-#define GFN 2
-#define SYM 3
-#define NAV 4
-#define NUM 5
-#define ALT 6
-#define CMD 7
-#define MIR 8
+#define GIT 1
+#define SYM 2
+#define NAV 3
+#define NUM 4
+#define ALT 5
+#define CMD 6
+#define MIR 7
 
 #define MEH(key) LS(LC(LA(key)))
 
@@ -60,23 +59,13 @@ _ Z          _ X          _ C          _ V         _ B             _ N          
             >;
         };
 
-        gam_layer {
+        git_layer {
             display-name = "COMMIT";
             bindings = <
 _ TAB        _ Q          _ W          _ E         _ R             _ Y          _ U          _ S          _ V          _ TAB
 _ LSFT       _ A          _ S          _ D         _ F             _ TAB        _ J          _ K          _ L          _ LSFT
 _ LCTRL      _ Z          _ X          _ C         _ V             ___          ___          ___          ___          _ RCTRL
-                          _ LALT       _ SPACE     &mo GFN         &tog GAM     _ SPACE      _ PSCRN
-            >;
-        };
-
-        gfn_layer {
-            display-name = "COMMIT_FN";
-            bindings = <
-_ N5         _ N1         _ N2         _ N3        _ N4            &rgb_ug RGB_TOG ___          ___          ___          ___
-_ N0         _ N6         _ N7         _ N8        _ N9            ___             ___          ___          ___          ___
-_ G          _ J          _ I          _ M         _ T             ___             ___          ___          ___          ___
-                          _ ESC        _ RET       ______          ___             ___          ___
+                          _ LALT       _ SPACE     ______          &tog GIT     _ SPACE      _ PSCRN
             >;
         };
 
@@ -95,7 +84,7 @@ _ BSL        ___          _ LS(LBKT)   _ LBKT      _ UNDER         _ EQUAL      
             bindings = <
 _ HOME       _ END        &swapper_mac &tabber     _ ESC           _ ESC        _ HOME       _ END        _ BSPC       _ DEL
 _ LEFT       _ DOWN       _ UP         _ RIGHT     _ RET           _ LEFT       _ DOWN       _ UP         _ RIGHT      _ RET
-_ PSPC       _ NSPC       &tog GAM     _ PSCRN     _ TAB           _ TAB        _ PG_UP      _ PG_DN      _ APOS       ___
+_ PSPC       _ NSPC       &tog GIT     _ PSCRN     _ TAB           _ TAB        _ PG_UP      _ PG_DN      _ APOS       ___
                           &mo CMD      ______      ______          ______       ______       ______
             >;
         };

@@ -230,3 +230,27 @@ Ported from the same fix on `charybdis`. `_ RA(DOT)`/`_ RA(FSLH)` (giving
 `_ LS(RA(DOT))`/`_ LS(RA(FSLH))` for `{`/`}`. `LS(RA(DOT))` = `{` verified
 via `m_elmap`'s `%{` output; `LS(RA(FSLH))` = `}` follows the same pattern,
 confirmed working on charybdis's hardware, not yet flashed here.
+
+### `GAM`/`gam_layer` renamed to `GIT`/`git_layer`; `GFN`/`gfn_layer` dropped
+
+Ported from the same cleanup on `charybdis` (`gam_layer`/`gfn_layer` were
+mislabeled `GAME`/`GAME_FN` there too - actually a git+vim COMMIT workflow
+layer). `display-name = "COMMIT"` was already correct and untouched; this
+was purely about the macro/node identifiers, kept short (`GIT`, matching
+the other 3-letter layer names) rather than the 6-letter `COMMIT` charybdis
+ended up with.
+
+- `#define GAM 1` -> `#define GIT 1`, `gam_layer` -> `git_layer`, both
+  `&tog GAM` -> `&tog GIT`.
+- `gfn_layer`/`GFN` (`COMMIT_FN`) dropped entirely - confirmed unused
+  ("никогда"), unlike charybdis's version this one actually had real
+  content (a numpad-ish grid on the left hand), not near-empty, but dead
+  weight either way. `git_layer`'s thumb key that used to hold `&mo GFN` is
+  now `______`, falling through to `DEFAULT`'s `&la NAV` at that position -
+  same pattern as charybdis's equivalent fix.
+- Renumbered `SYM/NAV/NUM/ALT/CMD/MIR` from `3-8` down to `2-7` to match -
+  layer index is devicetree node order in the `keymap` block, not the
+  `#define` value, so removing a node shifts every later layer's real index
+  down by one regardless of what the macros say. No other file references
+  skeletyl's layer indices (unlike charybdis's `split_input_common.dtsi`),
+  so this was the only place needing the sync.
