@@ -222,3 +222,11 @@ dongle's output to BLE.
 
 Confirmed working on hardware: dongle switches to `OUT_BLE` and pairs
 directly to the host over Bluetooth, same as charybdis.
+
+### ALT layer: `.`/`/` switched from `[`/`]` to `{`/`}`
+
+Ported from the same fix on `charybdis`. `_ RA(DOT)`/`_ RA(FSLH)` (giving
+`[`/`]` under Universal Layout's AltGr mapping) changed to
+`_ LS(RA(DOT))`/`_ LS(RA(FSLH))` for `{`/`}`. `LS(RA(DOT))` = `{` verified
+via `m_elmap`'s `%{` output; `LS(RA(FSLH))` = `}` follows the same pattern,
+confirmed working on charybdis's hardware, not yet flashed here.

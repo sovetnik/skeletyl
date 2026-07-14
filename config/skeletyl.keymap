@@ -115,7 +115,7 @@ _ F1         _ F2         _ F3         _ F4        _ F5            _ F6         
             bindings = <
 _ RA(Q)      _ RA(W)      _ RA(E)      _ RA(R)     _ RA(T)         _ RA(Y)      _ RA(U)      _ RA(I)      _ RA(O)      _ RA(P)
 _ RA(A)      &m_elpipe    &m_ldsh      &m_rdsh     _ RA(G)         _ RA(H)      _ RA(J)      _ RA(K)      _ RA(L)      _ RA(SEMI)
-_ RA(Z)      &m_elmap     &m_leq       &m_req      &m_insl         _ RA(N)      _ RA(M)      _ RA(COMMA)  _ RA(DOT)    _ RA(FSLH)
+_ RA(Z)      &m_elmap     &m_leq       &m_req      &m_insl         _ RA(N)      _ RA(M)      _ RA(COMMA)  _ LS(RA(DOT)) _ LS(RA(FSLH))
                           ______       _ NBSP      _ LSHFT         ______       ______       ______
             >;
         };
