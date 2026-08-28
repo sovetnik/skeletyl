@@ -254,3 +254,11 @@ ended up with.
   down by one regardless of what the macros say. No other file references
   skeletyl's layer indices (unlike charybdis's `split_input_common.dtsi`),
   so this was the only place needing the sync.
+
+### ALT layer: `E`/`R` mirror NAV's `swapper_mac`/`tabber`
+
+Ported from the same change on `charybdis`. `_ RA(E)`/`_ RA(R)` replaced
+with `&swapper_mac`/`&tabber` - both behaviors were already defined in
+`skeletyl_behaviors.dtsi`, just unused at this position. Gives app/tab
+switching a second, ALT-layer entry point at the same physical keys as
+`NAV`, instead of only being reachable via `NAV`.
