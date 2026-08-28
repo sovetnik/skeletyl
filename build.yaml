@@ -33,9 +33,13 @@ include:
   - board: skeletyl_right
     artifact-name: skeletyl_right
 
+  - board: skeletyl_left
+    shield: settings_reset
+    artifact-name: settings_reset_left
+
   - board: skeletyl_right
     shield: settings_reset
-    artifact-name: settings_reset_halves
+    artifact-name: settings_reset_right
 
   # --- fallback: no dongle, halves talk directly over BLE ---
   # skeletyl_left is identical in both setups (peripheral by default).

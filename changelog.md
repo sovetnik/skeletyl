@@ -262,3 +262,22 @@ with `&swapper_mac`/`&tabber` - both behaviors were already defined in
 `skeletyl_behaviors.dtsi`, just unused at this position. Gives app/tab
 switching a second, ALT-layer entry point at the same physical keys as
 `NAV`, instead of only being reachable via `NAV`.
+
+### Left half battery: still 0% after `&bt BT_CLR_ALL`, added a dedicated `settings_reset_left` build
+
+Enabled `CONFIG_ZMK_BATTERY_REPORTING=y` on both halves (right works, left
+reads 0%); tried a `vbatt` `io-channels = <&adc 1>` override on
+`skeletyl_left.dts` (reverted - no effect, and moot anyway since left
+reported its own battery fine back when it was central, before the dongle,
+so the ADC path itself isn't the problem); tried `&bt BT_CLR_ALL` on left
+(clears BLE bonds only) - still 0%.
+
+Next step: a full settings-partition wipe, not just bonds - left carries
+NVS state from its previous stint as split-central (own bond list to the
+host, split role/address state) that peripheral-role BLE_CLR_ALL doesn't
+touch. `build.yaml` only had a `settings_reset` target built on
+`skeletyl_right` (`settings_reset_halves`, apparently intended to serve
+both halves since `settings_reset` itself doesn't touch kscan/pinctrl) -
+split it into `settings_reset_left` (on `skeletyl_left`, matching its own
+pinout) and renamed the existing one `settings_reset_right`, so there's a
+board-correct image for each half. Not yet flashed/confirmed.
