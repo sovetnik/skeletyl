@@ -38,6 +38,10 @@
     };
 };
 
+&vbatt {
+    io-channels = <&adc 1>;
+};
+
 &spi3 {
   compatible = "nordic,nrf-spim";
   status = "okay";
