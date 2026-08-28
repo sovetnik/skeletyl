@@ -262,21 +262,3 @@ with `&swapper_mac`/`&tabber` - both behaviors were already defined in
 `skeletyl_behaviors.dtsi`, just unused at this position. Gives app/tab
 switching a second, ALT-layer entry point at the same physical keys as
 `NAV`, instead of only being reachable via `NAV`.
-
-### Battery reporting enabled on both halves
-
-`skeletyl_dongle.conf` already had `CONFIG_ZMK_SPLIT_BLE_CENTRAL_BATTERY_
-LEVEL_FETCHING`/`_PROXY=y`, but the halves themselves never set
-`CONFIG_ZMK_BATTERY_REPORTING=y` - added to `skeletyl_left_defconfig` and
-`skeletyl_right_defconfig`.
-
-### Left half still reads 0% battery - trying AIN1 instead of AIN2
-
-After enabling reporting, right half reports fine but left stays at 0%.
-Hypothesis: `vbatt`'s `io-channels = <&adc 2>` in the shared `skeletyl.dtsi`
-assumes the same ADC pin on both halves, but the two boards already wire
-`spi3`'s MOSI to different pins (`P0.12` left vs `P0.22` right in their
-respective `.dts`), so an asymmetric battery-sense pin isn't implausible.
-Added a `&vbatt { io-channels = <&adc 1>; };` override to
-`skeletyl_left.dts` to test on hardware - unverified, revert if it doesn't
-fix the reading.
