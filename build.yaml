@@ -13,14 +13,37 @@
 #
 ---
 include:
-  - board: skeletyl_left
+  # --- nice!nano dongle as central (rfcs/0001-nice-nano-dongle.md) ---
+  - board: nice_nano/nrf52840/zmk
+    shield: skeletyl_dongle
     snippet: studio-rpc-usb-uart
     cmake-args: >-
       -DCONFIG_ZMK_STUDIO=y
       -DCONFIG_ZMK_STUDIO_LOCKING=n
+    artifact-name: skeletyl_dongle
+
+  - board: nice_nano/nrf52840/zmk
+    shield: settings_reset
+    artifact-name: settings_reset_dongle
+
+  # --- halves, both peripherals now ---
+  - board: skeletyl_left
     artifact-name: skeletyl_left
+
   - board: skeletyl_right
     artifact-name: skeletyl_right
+
+  - board: skeletyl_left
+    shield: settings_reset
+    artifact-name: settings_reset_left
+
   - board: skeletyl_right
     shield: settings_reset
-    artifact-name: settings_reset
+    artifact-name: settings_reset_right
+
+  # --- fallback: no dongle, halves talk directly over BLE ---
+  # skeletyl_left is identical in both setups (peripheral by default).
+  # skeletyl_right needs to be forced central since there's no dongle to take that role.
+  - board: skeletyl_right
+    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
+    artifact-name: skeletyl_right_standalone_central

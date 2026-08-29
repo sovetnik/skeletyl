@@ -11,14 +11,13 @@
 #define ______ &trans
 
 #define DEF 0
-#define GAM 1
-#define GFN 2
-#define SYM 3
-#define NAV 4
-#define NUM 5
-#define ALT 6
-#define CMD 7
-#define MIR 8
+#define GIT 1
+#define SYM 2
+#define NAV 3
+#define NUM 4
+#define ALT 5
+#define CMD 6
+#define MIR 7
 
 #define MEH(key) LS(LC(LA(key)))
 
@@ -54,29 +53,19 @@
             display-name = "DEFAULT";
             bindings = <
 _ Q          _ W          _ E          _ R         _ T             _ Y          _ U          _ I          _ O          _ P
-_ A          _ S          _ D          _ F         _ G             _ H          _ J          _ K          _ L          _ SEMI
+&hml LGUI A  &hml LALT S  &hml LCTRL D &hml LSHFT F _ G             _ H          &hmr LSHFT J &hmr LCTRL K &hmr LALT L  &hmr LGUI SEMI
 _ Z          _ X          _ C          _ V         _ B             _ N          _ M          _ COMMA      _ DOT        _ FSLH
                           _ CAPS       &mt LSHFT SPACE &la NAV     &la SYM      &mt RSHFT BSPC  &mo ALT
             >;
         };
 
-        gam_layer {
-            display-name = "GAME";
+        git_layer {
+            display-name = "COMMIT";
             bindings = <
-_ TAB        _ Q          _ W          _ E         _ R             ___          ___          _ UP         ___          _ TAB
-_ LSFT       _ A          _ S          _ D         _ F             ___          _ LEFT       _ DOWN       _ RIGHT      _ RSFT
+_ TAB        _ Q          _ W          _ E         _ R             _ Y          _ U          _ S          _ V          _ TAB
+_ LSFT       _ A          _ S          _ D         _ F             _ TAB        _ J          _ K          _ L          _ LSFT
 _ LCTRL      _ Z          _ X          _ C         _ V             ___          ___          ___          ___          _ RCTRL
-                          _ LALT       _ SPACE     &mo GFN         &tog GAM     _ SPACE      _ PSCRN
-            >;
-        };
-
-        gfn_layer {
-            display-name = "GAME_FN";
-            bindings = <
-_ N5         _ N1         _ N2         _ N3        _ N4            &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_CLR_ALL
-_ N0         _ N6         _ N7         _ N8        _ N9            ___          ___          ___          ___          ___
-_ G          _ J          _ I          _ M         _ T             _ KP_NUM     ___          ___          &sys_reset   &bootloader
-                          _ ESC        _ RET       ______          ______       ______       ______
+                          _ LALT       _ SPACE     ______          &tog GIT     _ SPACE      _ PSCRN
             >;
         };
 
@@ -84,7 +73,7 @@ _ G          _ J          _ I          _ M         _ T             _ KP_NUM     
             display-name = "SYMBOLS";
             bindings = <
 _ N1         _ N2         _ N3         _ N4        _ N5            _ N6         _ N7         _ N8         _ N9         _ N0
-_ SEMI       _ GRV        _ SQT        _ DQT       _ MINUS         _ PLUS       &cm_sft      &cm_ctrl     &cm_alt      &cm_gui
+_ SEMI       _ GRV        _ SQT        _ DQT       _ MINUS         _ PLUS       ______       ______       ______       ______
 _ BSL        ___          _ LS(LBKT)   _ LBKT      _ UNDER         _ EQUAL      _ RBKT       _ LS(RBKT)   _ PIP        _ BSLH
                           ______       ______      ______          ______       ______       ______
             >;
@@ -94,8 +83,8 @@ _ BSL        ___          _ LS(LBKT)   _ LBKT      _ UNDER         _ EQUAL      
             display-name = "NAVIGATION";
             bindings = <
 _ HOME       _ END        &swapper_mac &tabber     _ ESC           _ ESC        _ HOME       _ END        _ BSPC       _ DEL
-&cm_gui      &cm_alt      &cm_ctrl     &cm_sft     _ RET           _ LEFT       _ DOWN       _ UP         _ RIGHT      _ RET
-_ PSPC       _ NSPC       &tog GAM     _ PSCRN     _ TAB           _ TAB        _ PG_UP      _ PG_DN      _ APOS       _ KP_NUM
+_ LEFT       _ DOWN       _ UP         _ RIGHT     _ RET           _ LEFT       _ DOWN       _ UP         _ RIGHT      _ RET
+_ PSPC       _ NSPC       &tog GIT     _ PSCRN     _ TAB           _ TAB        _ PG_UP      _ PG_DN      _ APOS       ___
                           &mo CMD      ______      ______          ______       ______       ______
             >;
         };
@@ -104,7 +93,7 @@ _ PSPC       _ NSPC       &tog GAM     _ PSCRN     _ TAB           _ TAB        
             display-name = "NUMPAD";
             bindings = <
 _ KP_N1      _ KP_N2      _ KP_N3      _ KP_N4     _ KP_N5         _ KP_N6      _ KP_N7      _ KP_N8      _ KP_N9      _ KP_N0
-&cm_gui      &cm_alt      &cm_ctrl     &cm_sft     _ F11           _ F12        &cm_sft      &cm_ctrl     &cm_alt       &cm_gui
+______       ______       ______       ______      _ F11           _ F12        ______       ______       ______       ______
 _ F1         _ F2         _ F3         _ F4        _ F5            _ F6         _ F7         _ F8         _ F9         _ F10
                           ______       ______      ______          ______       ______       ______
             >;
@@ -113,9 +102,9 @@ _ F1         _ F2         _ F3         _ F4        _ F5            _ F6         
         alt_layer {
             display-name = "ALT_CHARS";
             bindings = <
-_ RA(Q)      _ RA(W)      _ RA(E)      _ RA(R)     _ RA(T)         _ RA(Y)      _ RA(U)      _ RA(I)      _ RA(O)      _ RA(P)
+_ RA(Q)      _ RA(W)      &swapper_mac &tabber     _ RA(T)         _ RA(Y)      _ RA(U)      _ RA(I)      _ RA(O)      _ RA(P)
 _ RA(A)      &m_elpipe    &m_ldsh      &m_rdsh     _ RA(G)         _ RA(H)      _ RA(J)      _ RA(K)      _ RA(L)      _ RA(SEMI)
-_ RA(Z)      &m_elmap     &m_leq       &m_req      &m_insl         _ RA(N)      _ RA(M)      _ RA(COMMA)  _ RA(DOT)    _ RA(FSLH)
+_ RA(Z)      &m_elmap     &m_leq       &m_req      &m_insl         _ RA(N)      _ RA(M)      _ RA(COMMA)  _ LS(RA(DOT)) _ LS(RA(FSLH))
                           ______       _ NBSP      _ LSHFT         ______       ______       ______
             >;
         };
@@ -123,9 +112,9 @@ _ RA(Z)      &m_elmap     &m_leq       &m_req      &m_insl         _ RA(N)      
         cmd_layer {
             display-name = "COMMAND";
             bindings = <
-&sys_reset   &bootloader  &bt BT_CLR_ALL &out OUT_USB &rgb_ug RGB_TOG &rgb_ug RGB_TOG _ C_VOL_DN   _ C_MUTE     _ C_VOL_UP   _ C_BRI_UP
+&sys_reset   &bootloader  &bt BT_CLR_ALL ___          &rgb_ug RGB_TOG &rgb_ug RGB_TOG _ C_VOL_DN   _ C_MUTE     _ C_VOL_UP   _ C_BRI_UP
 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2   &bt BT_SEL 3 &rgb_ug RGB_ON  _ MEH(H)     _ C_PREV     _ C_PP       _ C_NEXT     _ C_BRI_DEC
-___          ___          ___            ___          &rgb_ug RGB_OFF _ MEH(N)     _ MEH(M)     _ MEH(COMMA) _ MEH(DOT)   &bootloader
+___          &out OUT_BLE &out OUT_USB   ___          &rgb_ug RGB_OFF _ MEH(N)     _ MEH(M)     _ MEH(COMMA) _ MEH(DOT)   &bootloader
                           ______       ______      ______          _ LGUI       ______       ______
             >;
         };
@@ -135,7 +124,7 @@ ___          ___          ___            ___          &rgb_ug RGB_OFF _ MEH(N)  
             bindings = <
 ______       ______       ______       ______      &rgb_ug RGB_TOG &rgb_ug RGB_TOG &out OUT_USB  &bt BT_CLR_ALL &bootloader &sys_reset
 &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_SPI &rgb_ug RGB_BRI &rgb_ug RGB_EFF &rgb_ug RGB_EFF ______       ______         ______      ______
-&rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_SPD &rgb_ug RGB_BRD &rgb_ug RGB_EFR &rgb_ug RGB_EFR ______       ______         ______      ______
+&rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_SPD &rgb_ug RGB_BRD &rgb_ug RGB_EFR &rgb_ug RGB_EFR ______       &out OUT_USB   &out OUT_BLE      ______
                           ______       ______      ______          ______       ______       ______
             >;
         };

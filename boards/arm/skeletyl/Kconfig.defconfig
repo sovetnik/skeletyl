@@ -6,11 +6,14 @@ if BOARD_SKELETYL_LEFT
 config ZMK_KEYBOARD_NAME
   default "Skeletyl"
 
-config ZMK_SPLIT_BLE_ROLE_CENTRAL
-	default y
-
-config ZMK_USB
-	default y
+# Central role (and with it ZMK_USB, which depends on centrality) moved to
+# boards/shields/skeletyl_dongle - both halves are peripherals now (see
+# rfcs/0001-nice-nano-dongle.md). Do not force ZMK_USB here: a forced
+# default caused it to compile usb_hid.c against a peripheral build that
+# never compiles src/hid.c, producing linker errors. If skeletyl_left ever
+# needs a standalone-central fallback (like charybdis_right_standalone_central),
+# force role + USB together via cmake-args on that specific build target,
+# not as a permanent default here.
 
 endif # BOARD_SKELETYL_LEFT
 

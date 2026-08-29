@@ -10,13 +10,21 @@
 &pwm0 {
     status = "okay";
     pinctrl-0 = <&pwm0_default>;
-    pinctrl-names = "default";
+    pinctrl-1 = <&pwm0_sleep>;
+    pinctrl-names = "default", "sleep";
 };
 
 &pinctrl {
     pwm0_default: pwm0_default {
       group1 {
           psels = <14>; // Replace with the correct numeric pin value for your hardware
+      };
+    };
+
+    pwm0_sleep: pwm0_sleep {
+      group1 {
+          psels = <14>; // Replace with the correct numeric pin value for your hardware
+          low-power-enable;
       };
     };
 

@@ -1,8 +1,17 @@
 # SPDX-License-Identifier: MIT
 CONFIG_BUILD_OUTPUT_UF2=y
 
-CONFIG_ZMK_USB=y
-CONFIG_ZMK_USB_LOGGING=n
+# ZMK_USB removed: skeletyl_left is a peripheral now (central role moved to
+# boards/shields/skeletyl_dongle, see rfcs/0001-nice-nano-dongle.md).
+# ZMK_USB depends on (!ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL) upstream, but a
+# literal CONFIG_ZMK_USB=y in this board-level _defconfig still got baked
+# into the peripheral build - forcing usb_hid.c to compile
+# (target_sources_ifdef(CONFIG_ZMK_USB ... usb_hid.c)) while src/hid.c
+# (which it calls into) is gated purely on split-central and so wasn't
+# compiled, producing linker errors (undefined zmk_hid_get_keyboard_report
+# etc). charybdis's peripheral .conf files never set ZMK_USB at all and
+# rely on nice_nano's own board defconfig, which resolves correctly - same
+# approach here: don't force it, let the depends clause decide.
 
 # Enable MPU
 CONFIG_ARM_MPU=y
@@ -44,6 +53,9 @@ CONFIG_ZMK_IDLE_TIMEOUT=900000
 CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=86400000
 
 CONFIG_SPI=y
+
+# Enable battery reporting
+CONFIG_ZMK_BATTERY_REPORTING=y
 
 # OLED config
 #CONFIG_ZMK_DISPLAY=n
